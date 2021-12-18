@@ -11,16 +11,10 @@ html {
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
     background: linear-gradient(to right, #190061, #0c0032);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .game {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,18 +23,19 @@ body {
 }
 
 .board {
-    height: 50%;
-    width: 50rem;
+    height: 36rem;
+    width: 36rem;
     margin: 0;
     margin-right: 10rem;
     display: grid;
     grid-template-columns: repeat(3, auto);
+    margin: 0 auto;
 }
 
 .cell {
-    height: 20rem;
-    width: 20rem;
-    font-size: 15rem;
+    height: 12rem;
+    width: 12rem;
+    font-size: 12rem;
     position: relative;
     display: flex;
     justify-content: center;
@@ -88,7 +83,7 @@ body {
 }
 
 .title {
-    font-size: 7rem;
+    font-size: 6rem;
     color: white;
 }
 
@@ -99,23 +94,27 @@ body {
 }
 
 .restart-button {
-    font-size: 4rem;
+    font-size: 3rem;
     padding: 1.2rem 3rem;
-    background-color: #190061;
+    border-radius: .5rem;
+    background-color: hsl(255, 100%, 19%);
     color: white;
     display: none;
+    cursor: pointer;
 }
 
 .restart-button:focus {
     outline: none;
 }
 
+.restart-button:hover {
+    background-color: hsl(255, 100%, 39%);
+}
+
 .header-display {
-    height: 50%;
     display: flex;
     flex-direction: column;
-    width: 100%;
     align-items: center;
     justify-content: center;
-    margin: 10rem auto;
+    margin: 3rem;
 }
