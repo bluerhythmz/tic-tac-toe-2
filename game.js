@@ -15,11 +15,14 @@ const winConditions = [
 const restartButton = document.querySelector(".restart-button");
 let currentPlayer = O_TEXT;
 let ai = X_TEXT;
+let aiMoving = false
 
 function game() {
   cells.forEach((cell, index) => {
     cell.addEventListener("click", (e) => {
       if (e.target.hasChildNodes()) return;
+      if (aiMoving) return
+      aiMoving = true
       cells.splice(index, 1, currentPlayer);
       const chosenSquare = document.createElement("div");
       chosenSquare.innerHTML = currentPlayer;
@@ -59,7 +62,11 @@ function aiMove() {
   chosenSquareAi.innerHTML = ai;
   aiPosition.appendChild(chosenSquareAi);
   chosenSquareAi.classList.add("active");
+  chosenSquareAi.addEventListener('animationend', () => {
+    aiMoving = false
+  })
   cells.splice(cells.indexOf(aiPosition), 1, ai);
+  
   if (winCheck(ai)) {
     winnerDisplay.innerText = `${ai} Wins!`;
     winnerDisplay.classList.add("active");
