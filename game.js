@@ -1,5 +1,6 @@
 let cells = Array.from(document.querySelectorAll(".cell"));
 const winnerDisplay = document.querySelector(".winner");
+const restartButton = document.querySelector(".restart-button");
 const O_TEXT = "O";
 const X_TEXT = "X";
 const winConditions = [
@@ -12,7 +13,6 @@ const winConditions = [
   [0, 4, 8],
   [2, 4, 6],
 ];
-const restartButton = document.querySelector(".restart-button");
 let currentPlayer = O_TEXT;
 let ai = X_TEXT;
 let aiMoving = false
@@ -87,19 +87,17 @@ function drawCheck() {
   return cells.every((cell) => typeof cell !== "object");
 }
 
-function restart() {
-  restartButton.addEventListener("click", () => {
-    cells = Array.from(document.querySelectorAll(".cell"));
-    cells.forEach((cell) => {
-      cell.innerText = "";
-    });
-    winnerDisplay.classList.remove("active");
-    winnerDisplay.innerText = "";
-    restartButton.style.display = "none";
-    restartButton.classList.remove("active");
+
+restartButton.addEventListener("click", () => {
+  cells = Array.from(document.querySelectorAll(".cell"));
+  cells.forEach((cell) => {
+    cell.innerText = "";
   });
+  winnerDisplay.classList.remove("active");
+  winnerDisplay.innerText = "";
+  restartButton.style.display = "none";
+  restartButton.classList.remove("active");
+  aiMoving = false
+});
 
-  game();
-}
-
-restart();
+game()
